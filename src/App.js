@@ -1,13 +1,10 @@
+import React from 'react';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <div>
-          <h3>OLa</h3>
-        </div>
-      </header>
+      <h3>OLa</h3>
     </div>
   );
 }
