@@ -9,7 +9,7 @@ import './App.css';
 const schema = yup.object({
   name: yup.string().required("Nome é obrigatório"),
   email: yup.string().email("Email inválido").required("Email obrigatório"),
-  senha: yup.string().min(6, "Senha menor que 6 caracteres").required("Senha obrigatório"),
+  senha: yup.string().min(6, "Senha deve ser maior que 6 caracteres").required("Senha obrigatório"),
   confirmarSenha: yup.string().oneOf([yup.ref('senha'), null], 'As senhas não coincidem').required("Campo obrigatório")
 }).required();
 
@@ -17,7 +17,7 @@ export default function App() {
   const {
     register,
     handleSubmit,
-    watch,
+    // watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -28,7 +28,7 @@ export default function App() {
     console.log(data)
   }
 
-  console.log(errors)
+  // console.log(errors)
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <img src={FormLogo} alt="Form Logo" className="form-logo" />
