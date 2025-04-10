@@ -50,7 +50,7 @@ export default function App() {
       <label>
         Senha
         <input type="text" placeholder="Senha" {...register("senha", { required: true })}/>
-        <span >          {errors.senha?.message}        </span>
+        <span >{errors.senha?.message}</span>
       </label>
 
       <label>
