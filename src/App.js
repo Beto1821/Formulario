@@ -9,7 +9,9 @@ import './App.css';
 const schema = yup.object({
   name: yup.string().required("Nome é obrigatório"),
   email: yup.string().email("Email inválido").required("Email obrigatório"),
-  senha: yup.string().min(6, "Senha deve ser maior que 6 caracteres").required("Senha obrigatório"),
+  senha: yup.string()
+    .matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Senha 8 caract, 1 maiúscula, 1 número e 1 caractere especial")
+    .required("Senha obrigatória"),
   confirmarSenha: yup.string().oneOf([yup.ref('senha'), null], 'As senhas não coincidem').required("Campo obrigatório")
 }).required();
 
@@ -48,7 +50,7 @@ export default function App() {
       <label>
         Senha
         <input type="text" placeholder="Senha" {...register("senha", { required: true })}/>
-        <span>{errors.senha?.message}</span>
+        <span >          {errors.senha?.message}        </span>
       </label>
 
       <label>
